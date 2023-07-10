@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 
 import {Todo} from './types';
@@ -25,9 +25,17 @@ function App() {
     setText('');
   };
 
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/todos')
+      .then(res => res.json())
+      .then((data: Todo[]) => {
+        setTodos(data);
+      })
+  }, []);
+
   return (
     <div className="App">
-      <NewTodoForm value={text} onChange={handleInput} handleClick={addTodo} />
+      <NewTodoForm value={text} onChange={handleInput} handleClick={addTodo}/>
       <TodoItem id='hello' title='Custom title' completed={false} styles={{
         border: '1px solid white'
       }}/>
