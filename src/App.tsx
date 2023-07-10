@@ -6,7 +6,9 @@ import TodoItem from "./components/TodoItem";
 function App() {
   return (
     <div className="App">
-      <TodoItem id='hello' title='Custom title' completed={false} />
+      <TodoItem id='hello' title='Custom title' completed={false} styles={{
+        border: '1px solid white'
+      }}/>
     </div>
   );
 }
